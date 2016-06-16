@@ -18,7 +18,7 @@ describe('wrap-listen', () => {
   }))
 
   it('Wrap listen', () => co(function * () {
-
+    assert.ok(wrapListen(() => null))
   }))
 })
 

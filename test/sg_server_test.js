@@ -19,6 +19,7 @@ describe('sg-web', () => {
       public: `${__dirname}/../doc/mocks`,
       middlewares: [
         co.wrap(function * saySay (ctx, next) {
+          assert.equal(ctx.hoge, 'fuge')
           ctx.set({ foo: 'bar' })
           yield next()
         })
@@ -29,6 +30,9 @@ describe('sg-web', () => {
             ctx.body = 'This is foo'
           }
         }
+      },
+      context: {
+        hoge: 'fuge'
       }
     })
     yield server.listen(port)

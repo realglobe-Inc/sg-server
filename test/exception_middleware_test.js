@@ -18,7 +18,7 @@ describe('exception-middleware', () => {
   }))
 
   it('Exception middleware', () => co(function * () {
-
+    assert.ok(exceptionMiddleware())
   }))
 })
 

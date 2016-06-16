@@ -18,7 +18,7 @@ describe('wrap-close', () => {
   }))
 
   it('Wrap close', () => co(function * () {
-
+    assert.ok(wrapClose(() => null))
   }))
 })
 

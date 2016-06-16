@@ -18,7 +18,7 @@ describe('route-middleware', () => {
   }))
 
   it('Route middleware', () => co(function * () {
-
+    assert.ok(routeMiddleware({}))
   }))
 })
 

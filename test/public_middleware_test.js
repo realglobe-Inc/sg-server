@@ -18,7 +18,7 @@ describe('public-middleware', () => {
   }))
 
   it('Public middleware', () => co(function * () {
-
+    assert.ok(publicMiddleware('hoge'))
   }))
 })
 
