@@ -114,7 +114,7 @@ co(function * () {
 Signature
 -------
 
-#### sgServer(config, options) -> http.Server
+#### sgServer(config) -> http.Server
 
 Create web server
 
@@ -123,12 +123,12 @@ Create web server
 | Name | Type | Default | Description |
 | --- | ---- | --- | --- |
 | config | object  |  | Server configuration |
-| config.middlewares | function[]  |  | Middlewares instance |
-| options.keys | string  |  | Koa keys |
-| options.context | Object  |  | Koa context prototype |
-| options.onError | function  |  | Error handler |
-| options.public | string|string[]  |  | Public directories. |
-| options.routes | Object  |  | Routers |
+| config.middlewares | function[]  | [] | Middlewares instance |
+| config.keys | string  |  | Koa keys |
+| config.context | Object  |  | Koa context prototype |
+| config.onError | function  |  | Error handler |
+| config.public | string  |  | Public directories. |
+| config.routes | Object  |  | Routers |
 
 
 <!-- Section from "doc/guides/03.Signature.md.hbs" End -->
