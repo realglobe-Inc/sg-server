@@ -1,10 +1,10 @@
 'use strict'
 
-const sgWeb = require('sg-web')
+const sgServer = require('sg-web')
 const co = require('co')
 
 co(function * () {
-  let server = sgWeb({
+  let server = sgServer({
     /** Static directories to serve */
     public: [ 'public' ],
     /** Koa middlewares to use */

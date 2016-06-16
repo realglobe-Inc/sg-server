@@ -1,13 +1,13 @@
 {
-  "name": "sg-web",
+  "name": "sg-server",
   "version": "1.0.1",
-  "description": "HTTP web server for SUGOS",
+  "description": "HTTP server for SUGOS",
   "main": "lib",
   "scripts": {
     "test": "./ci/test.js",
     "prepublish": "./ci/build.js"
   },
-  "repository": "realglobe-Inc/sg-web",
+  "repository": "realglobe-Inc/sg-server",
   "keywords": [
     "SUGOS",
     "web"
@@ -19,9 +19,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/realglobe-Inc/sg-web/issues"
+    "url": "https://github.com/realglobe-Inc/sg-server/issues"
   },
-  "homepage": "https://github.com/realglobe-Inc/sg-web#readme",
+  "homepage": "https://github.com/realglobe-Inc/sg-server#readme",
   "dependencies": {
     "apemanport": "^1.0.0",
     "apemanrequest": "^1.1.0",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "ape-covering": "^3.0.3",
+    "ape-doc": "^2.0.0",
     "ape-formatting": "^1.0.0",
     "ape-releasing": "^3.1.1",
     "ape-reporting": "^3.0.1",

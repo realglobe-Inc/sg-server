@@ -5,12 +5,12 @@
 
 'use strict'
 
-const sgWeb = require('./sg_web')
+const sgServer = require('./sg_server')
 
-let lib = sgWeb.bind(this)
+let lib = sgServer.bind(this)
 
-Object.assign(lib, sgWeb, {
-  sgWeb
+Object.assign(lib, sgServer, {
+  sgServer
 })
 
 module.exports = lib

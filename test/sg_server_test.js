@@ -1,10 +1,10 @@
 /**
- * Test case for sgWeb.
+ * Test case for sgServer.
  * Runs with mocha.
  */
 'use strict'
 
-const sgWeb = require('../lib/sg_web.js')
+const sgServer = require('../lib/sg_server.js')
 const assert = require('assert')
 const co = require('co')
 const apemanport = require('apemanport')
@@ -15,7 +15,7 @@ describe('sg-web', () => {
   let request = apemanrequest.create({ jar: true })
   before(() => co(function * () {
     let port = yield apemanport.find()
-    server = sgWeb({
+    server = sgServer({
       public: `${__dirname}/../doc/mocks`,
       middlewares: [
         co.wrap(function * saySay (ctx, next) {

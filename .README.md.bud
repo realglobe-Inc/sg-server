@@ -5,6 +5,7 @@
 'use strict'
 
 const apeTmpl = require('ape-tmpl')
+const apeDoc = require('ape-doc')
 const pkg = require('./package.json')
 
 module.exports = apeTmpl.readmeMdBud({
@@ -23,7 +24,14 @@ module.exports = apeTmpl.readmeMdBud({
   },
   overview: 'doc/overview.md',
   links: require('./doc/links'),
-  vars: {}
+  vars: {
+    get signature () {
+      let comments = apeDoc.commentsInFile(
+        require.resolve('./lib/sg_server.js')
+      )
+      return apeDoc.commentsInFile.describeFunction(comments[ 0 ])
+    }
+  }
 })
 
 if (!module.parent) {
