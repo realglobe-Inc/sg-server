@@ -1,6 +1,6 @@
 'use strict'
 
-const sgServer = require('sg-web')
+const sgServer = require('sg-server')
 const co = require('co')
 
 co(function * () {

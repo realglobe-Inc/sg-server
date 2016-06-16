@@ -10,7 +10,7 @@ const co = require('co')
 const apemanport = require('apemanport')
 const apemanrequest = require('apemanrequest')
 
-describe('sg-web', () => {
+describe('sg-server', () => {
   let server, baseUrl, port
   let request = apemanrequest.create({ jar: true })
   before(() => co(function * () {
@@ -27,6 +27,8 @@ describe('sg-web', () => {
       endpoints: {
         '/api/foo': {
           'POST': (ctx) => {
+            let { body } = ctx.request
+            assert.equal(body.hoge, 'This is hoge')
             ctx.body = 'This is foo'
           }
         },
@@ -46,14 +48,14 @@ describe('sg-web', () => {
     yield server.close()
   }))
 
-  it('Sg web', () => co(function * () {
+  it('Sg server', () => co(function * () {
     assert.equal(server.port, port)
     {
       let { statusCode, body, headers } = yield request({
         method: 'POST',
         url: `${baseUrl}/api/foo`,
         json: true,
-        body: {}
+        body: { 'hoge': 'This is hoge' }
       })
       assert.equal(statusCode, 200)
       assert.equal(body, 'This is foo')
@@ -64,7 +66,7 @@ describe('sg-web', () => {
         method: 'GET',
         url: `${baseUrl}/api/bar`,
         json: true,
-        body: {}
+        body: { 'hoge': 'This is hoge' }
       })
       assert.equal(statusCode, 200)
       assert.equal(body, 'This is bar')
