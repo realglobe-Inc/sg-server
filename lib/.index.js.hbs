@@ -1,0 +1,16 @@
+/**
+ * {{pkg.description}}
+ * @module {{pkg.name}}
+ */
+
+'use strict'
+
+const sgWeb = require('./sg_web')
+
+let lib = sgWeb.bind(this)
+
+Object.assign(lib, sgWeb, {
+  sgWeb
+})
+
+module.exports = lib
