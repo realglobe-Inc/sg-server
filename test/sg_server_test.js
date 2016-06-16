@@ -24,7 +24,7 @@ describe('sg-web', () => {
           yield next()
         })
       ],
-      routes: {
+      endpoints: {
         '/api/foo': {
           'POST': (ctx) => {
             ctx.body = 'This is foo'

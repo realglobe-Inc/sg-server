@@ -8,8 +8,8 @@ co(function * () {
     /** Static directories to serve */
     public: [ 'public' ],
     /** Koa middlewares to use */
-    middlewares: [
-      co.wrap(function * customMiddleware (ctx, next) {
+    endpoints: [
+      co.wrap(function * customEndpoint (ctx, next) {
         /* ... */
         yield next()
       })

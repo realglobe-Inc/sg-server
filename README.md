@@ -81,8 +81,8 @@ co(function * () {
     /** Static directories to serve */
     public: [ 'public' ],
     /** Koa middlewares to use */
-    middlewares: [
-      co.wrap(function * customMiddleware (ctx, next) {
+    endpoints: [
+      co.wrap(function * customEndpoint (ctx, next) {
         /* ... */
         yield next()
       })
@@ -128,7 +128,7 @@ Create web server
 | config.context | Object  |  | Koa context prototype |
 | config.onError | function  |  | Error handler |
 | config.public | string  |  | Public directories. |
-| config.routes | Object  |  | Routers |
+| config.endpoints | Object  |  | Endpoint settins |
 
 
 <!-- Section from "doc/guides/03.Signature.md.hbs" End -->
