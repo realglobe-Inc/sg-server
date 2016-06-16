@@ -20,7 +20,7 @@ describe('sg-web', () => {
       middlewares: [
         co.wrap(function * saySay (ctx, next) {
           assert.equal(ctx.hoge, 'fuge')
-          ctx.set({ foo: 'bar' })
+          ctx.set({ quz: 'This is quz' })
           yield next()
         })
       ],
@@ -29,6 +29,9 @@ describe('sg-web', () => {
           'POST': (ctx) => {
             ctx.body = 'This is foo'
           }
+        },
+        '/api/bar': (ctx) => {
+          ctx.body = 'This is bar'
         }
       },
       context: {
@@ -44,17 +47,28 @@ describe('sg-web', () => {
   }))
 
   it('Sg web', () => co(function * () {
-    let { statusCode, body, headers } = yield request({
-      method: 'POST',
-      url: `${baseUrl}/api/foo`,
-      json: true,
-      body: {
-        foo: 'bar'
-      }
-    })
-    assert.equal(statusCode, 200)
-    assert.equal(body, 'This is foo')
-    assert.equal(headers.foo, 'bar')
+    {
+      let { statusCode, body, headers } = yield request({
+        method: 'POST',
+        url: `${baseUrl}/api/foo`,
+        json: true,
+        body: {}
+      })
+      assert.equal(statusCode, 200)
+      assert.equal(body, 'This is foo')
+      assert.equal(headers.quz, 'This is quz')
+    }
+    {
+      let { statusCode, body, headers } = yield request({
+        method: 'GET',
+        url: `${baseUrl}/api/bar`,
+        json: true,
+        body: {}
+      })
+      assert.equal(statusCode, 200)
+      assert.equal(body, 'This is bar')
+      assert.equal(headers.quz, 'This is quz')
+    }
   }))
 })
 
