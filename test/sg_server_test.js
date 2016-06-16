@@ -11,10 +11,10 @@ const apemanport = require('apemanport')
 const apemanrequest = require('apemanrequest')
 
 describe('sg-web', () => {
-  let server, baseUrl
+  let server, baseUrl, port
   let request = apemanrequest.create({ jar: true })
   before(() => co(function * () {
-    let port = yield apemanport.find()
+    port = yield apemanport.find()
     server = sgServer({
       public: `${__dirname}/../doc/mocks`,
       middlewares: [
@@ -47,6 +47,7 @@ describe('sg-web', () => {
   }))
 
   it('Sg web', () => co(function * () {
+    assert.equal(server.port, port)
     {
       let { statusCode, body, headers } = yield request({
         method: 'POST',
