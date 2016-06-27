@@ -81,14 +81,14 @@ co(function * () {
     /** Static directories to serve */
     public: [ 'public' ],
     /** Koa middlewares to use */
-    endpoints: [
+    middlewares: [
       co.wrap(function * customEndpoint (ctx, next) {
         /* ... */
         yield next()
       })
     ],
     /** Routing handler */
-    routes: {
+    endpoints: {
       '/api/foo': {
         'POST': (ctx) => {
           ctx.body = 'This is foo'
