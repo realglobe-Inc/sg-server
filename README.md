@@ -87,7 +87,7 @@ co(function * () {
         yield next()
       })
     ],
-    /** Routing handler */
+    /** Endpoint handlers */
     endpoints: {
       '/api/foo': {
         'POST': (ctx) => {
