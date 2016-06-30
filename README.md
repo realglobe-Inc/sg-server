@@ -42,7 +42,7 @@ HTTP server for SUGOS
 <!-- Overview Start -->
 <a name="overview"></a>
 
-Using [koa](https://github.com/koajs/koa) as a base framework 
+Using [koa][koa_url] as a base framework 
 
 
 <!-- Overview End -->
@@ -118,9 +118,7 @@ Signature
 
 Create web server
 
-##### Args
-
-| Name | Type | Default | Description |
+| Arg | Type | Default | Description |
 | --- | ---- | --- | --- |
 | config | object  |  | Server configuration |
 | config.middlewares | function[]  | [] | Middlewares instance |
