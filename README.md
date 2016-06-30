@@ -153,7 +153,10 @@ This software is released under the [MIT License](https://github.com/realglobe-I
 Links
 ------
 
-+ [sugos](https://github.com/realglobe-Inc/sugos)
-+ [koa](https://github.com/koajs/koa)
++ [sugos][sugos_url]
++ [koa][koa_url]
+
+[sugos_url]: https://github.com/realglobe-Inc/sugos
+[koa_url]: https://github.com/koajs/koa
 
 <!-- Links End -->
