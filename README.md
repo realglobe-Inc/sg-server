@@ -79,7 +79,7 @@ const co = require('co')
 co(function * () {
   let server = sgServer({
     /** Static directories to serve */
-    public: [ 'public' ],
+    statics: [ 'public' ],
     /** Koa middlewares to use */
     middlewares: [
       co.wrap(function * customEndpoint (ctx, next) {
@@ -127,7 +127,7 @@ Create web server
 | config.keys | string  |  | Koa keys |
 | config.context | Object  |  | Koa context prototype |
 | config.onError | function  |  | Error handler |
-| config.public | string  |  | Public directories. |
+| config.static | string  |  | Public directories. |
 | config.endpoints | Object  |  | Endpoint settins |
 
 
