@@ -7,14 +7,14 @@
 const sgServer = require('../lib/sg_server.js')
 const assert = require('assert')
 const co = require('co')
-const apemanport = require('apemanport')
+const aport = require('aport')
 const apemanrequest = require('apemanrequest')
 
 describe('sg-server', () => {
   let server, baseUrl, port
   let request = apemanrequest.create({ jar: true })
   before(() => co(function * () {
-    port = yield apemanport.find()
+    port = yield aport()
     server = sgServer({
       public: `${__dirname}/../doc/mocks`,
       middlewares: [

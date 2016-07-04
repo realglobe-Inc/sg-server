@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/realglobe-Inc/sg-server#readme",
   "dependencies": {
-    "apemanport": "^2.0.0",
     "apemanrequest": "^2.0.1",
+    "aport": "^1.0.0",
     "co": "^4.6.0",
     "koa": "^2.0.0",
     "koa-bodyparser": "^3.1.0",
@@ -33,14 +33,14 @@
   },
   "devDependencies": {
     "ape-covering": "^3.0.3",
-    "ape-doc": "^2.0.2",
+    "ape-doc": "^2.0.3",
     "ape-formatting": "^1.0.0",
     "ape-releasing": "^4.0.1",
     "ape-reporting": "^3.0.1",
-    "ape-tasking": "^4.0.2",
+    "ape-tasking": "^4.0.3",
     "ape-testing": "^4.0.0",
     "ape-tmpl": "^5.0.11",
-    "ape-updating": "^4.0.2",
+    "ape-updating": "^4.0.3",
     "coz": "^6.0.3",
     "injectmock": "^2.0.0"
   },
