@@ -8,11 +8,11 @@ const sgServer = require('../lib/sg_server.js')
 const assert = require('assert')
 const co = require('co')
 const aport = require('aport')
-const apemanrequest = require('apemanrequest')
+const arequest = require('arequest')
 
 describe('sg-server', () => {
   let server, baseUrl, port
-  let request = apemanrequest.create({ jar: true })
+  let request = arequest.create({ jar: true })
   before(() => co(function * () {
     port = yield aport()
     server = sgServer({
