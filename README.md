@@ -54,6 +54,7 @@ Using [koa][koa_url] as a base framework
 <!-- Section from "doc/guides/01.Installation.md.hbs" Start -->
 
 <a name="section-doc-guides-01-installation-md"></a>
+
 Installation
 -----
 
@@ -67,6 +68,7 @@ $ npm install sg-server --save
 <!-- Section from "doc/guides/02.Usage.md.hbs" Start -->
 
 <a name="section-doc-guides-02-usage-md"></a>
+
 Usage
 ---------
 
@@ -111,6 +113,7 @@ co(function * () {
 <!-- Section from "doc/guides/03.Signature.md.hbs" Start -->
 
 <a name="section-doc-guides-03-signature-md"></a>
+
 Signature
 -------
 

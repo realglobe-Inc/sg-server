@@ -13,6 +13,8 @@ const arequest = require('arequest')
 describe('sg-server', () => {
   let server, baseUrl, port
   let request = arequest.create({ jar: true })
+  let setupDone = false
+  let teardownDone = false
   before(() => co(function * () {
     port = yield aport()
     server = sgServer({
@@ -38,14 +40,24 @@ describe('sg-server', () => {
       },
       context: {
         hoge: 'fuge'
+      },
+      setup () {
+        setupDone = true
+      },
+      teardown () {
+        teardownDone = true
       }
     })
+    assert.ok(!setupDone)
     yield server.listen(port)
     baseUrl = `http://localhost:${port}`
+    assert.ok(setupDone)
   }))
 
   after(() => co(function * () {
+    assert.ok(!teardownDone)
     yield server.close()
+    assert.ok(teardownDone)
   }))
 
   it('Sg server', () => co(function * () {
