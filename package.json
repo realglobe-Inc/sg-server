@@ -1,6 +1,6 @@
 {
   "name": "sg-server",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "HTTP server for SUGOS",
   "main": "lib",
   "scripts": {
