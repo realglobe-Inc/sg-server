@@ -2,10 +2,9 @@ language: node_js
 node_js:
 - '6'
 before_install:
-- echo "registry = https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-virtual" > $HOME/.npmrc
-- curl -u${NPM_USER}:${NPM_PASSWORD} "https://realglobe.artifactoryonline.com/realglobe/api/npm/auth" >> $HOME/.npmrc
-- cat $HOME/.npmrc
-- npm install istanbul mocha -g
+- npm i npm-cli-login -g
+- echo "NPM_USER=${NPM_USER}"
+- npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
 install:
 - npm install
 before_script:
@@ -13,10 +12,7 @@ before_script:
 script:
 - ./ci/build.js
 - ./ci/test.js
-- ./ci/cover.js
-- ./ci/report.js
 after_success:
 - ./ci/travis/publish.js
-- ./ci/travis/push_sugos_index.js
-env:
-  secure: "QvTO4K5blx0eHngX+Z4hM2Nv0T8DuYCJJU3ow1FO85LBvjU5ckmX51F/TFEhdb5gNcGg1e0lqNN4lqAZwTcLRX4zxUlCrbM0yOK250LAnEA2XfjZB5Uji9NtxYU1unKWtceHMEdaj/D23rt6W1CHcRufm+j4hCMei6Sr0jWlXQDcuOMVPHQiQzEBGQUiQMxhBhZaOrfzJsgGmcG9xjKZdcYHJ+woKP1hvIEhcjYJSHlW8tpdJAR1oRkqu2B0/klHELwg2NBABkn4g/AFS7WB8BHvoIN1xcWpjeSmYVi5sjgffTBqVYlDW1WPsqo9SszyuhpRMgshebG2Gjxw++WX4LROpXgq1gF4goJVC5K31GQNaYGRlj7anGf52fpFVULaSHp4UBeNRFI9lpNqB95kFp98Z0DgQZE0AN3ie/Gm4zC2eQeSmTB4WPoEZ/tAuLqeBXMXqqLzqvmnEf++JOEnTmr0nmqu160doQHzA2XII+e2NZF7oRavQb/xT4SDfG57tFOq6LzBVzrc1ulysfV3APvsIuUIj+nKeJRbTTGgcYpXeeUE+A5FJN89R5T/Q1Y5MZkKD9cYqJE8ub8EeQg3joWVC14Krg/13TtQzAj97I3togynEw+d1P2A7SOXhNtFtjZblfCemR0MDwRPN69vs039kCpkmt3P0R795UH3lqA="
+- ./ci/travis/push_sugos_index.jsenv:
+  secure: "G4LdiLq+Ng0tvNIyENgLLByEd462CbFx/kVW9SV0NMD8/p3QbG3n3dUCvyIsSOcRcowHZIMwJ/nqZmcb6Po5eqIjLQaXTIuTh5sWVZVQer74dgTuaonzsln5Gqw1EK063lmzkmRpmrYtuLjxlnIRqzXyAWmqa4zKSF33WOANPK8pc2xI8n4niHdTdoUc4fLLs4nsaTQkF/n7w7gLyLlkG3zl1Y79gm0hMliC58exFDmgMZmNAdLT47zAt6AqY6ixGj3IAwj3YxhubfVlK5o+ayi2u1U9YsVmkIO2yvujtzydM9b3DJiodFrmJDAAQket8STz1q+pKKt5jQJZk+LRzk57tyZzNcQTJXtmyyyMgdlysrO8QvXh82fZE814nxwasweXrJVrJ2KJ9iZByIjosREqKrjwybozXaYs9eh+Zlfq/r2qNLaHQTTm0qBF4UQ60fJJp/IzzV7coPfmPtoJcX9/7nEG4yG0qrY2fZnItRS4IJC8n3y0+/obOfSCXVAGJYLvJZToRSo2gf59MJuBQnJjywne1eZNJZZmWJysbFx+r37kALSmPO0XZeGqdWVBslUG5bf/ZRngK6Bt/kJnEzmu0mNqUH7C+52IedHmuZuJpWIgeLmTjlkyKHFvWeLr+nPC7S+Ky1w221e95WqD1bAUL455pCMhjduYNrjSaGI="
