@@ -2,10 +2,9 @@ language: node_js
 node_js:
 - '6'
 before_install:
-- echo "registry = https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-virtual" > $HOME/.npmrc
-- curl -u${NPM_USER}:${NPM_PASSWORD} "https://realglobe.artifactoryonline.com/realglobe/api/npm/auth" >> $HOME/.npmrc
-- cat $HOME/.npmrc
-- npm install istanbul mocha -g
+- npm i npm-cli-login -g
+- echo "NPM_USER=${NPM_USER}"
+- npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
 install:
 - npm install
 before_script:
@@ -13,10 +12,8 @@ before_script:
 script:
 - ./ci/build.js
 - ./ci/test.js
-- ./ci/cover.js
-- ./ci/report.js
 after_success:
 - ./ci/travis/publish.js
 - ./ci/travis/push_sugos_index.js
 env:
-  secure: "QvTO4K5blx0eHngX+Z4hM2Nv0T8DuYCJJU3ow1FO85LBvjU5ckmX51F/TFEhdb5gNcGg1e0lqNN4lqAZwTcLRX4zxUlCrbM0yOK250LAnEA2XfjZB5Uji9NtxYU1unKWtceHMEdaj/D23rt6W1CHcRufm+j4hCMei6Sr0jWlXQDcuOMVPHQiQzEBGQUiQMxhBhZaOrfzJsgGmcG9xjKZdcYHJ+woKP1hvIEhcjYJSHlW8tpdJAR1oRkqu2B0/klHELwg2NBABkn4g/AFS7WB8BHvoIN1xcWpjeSmYVi5sjgffTBqVYlDW1WPsqo9SszyuhpRMgshebG2Gjxw++WX4LROpXgq1gF4goJVC5K31GQNaYGRlj7anGf52fpFVULaSHp4UBeNRFI9lpNqB95kFp98Z0DgQZE0AN3ie/Gm4zC2eQeSmTB4WPoEZ/tAuLqeBXMXqqLzqvmnEf++JOEnTmr0nmqu160doQHzA2XII+e2NZF7oRavQb/xT4SDfG57tFOq6LzBVzrc1ulysfV3APvsIuUIj+nKeJRbTTGgcYpXeeUE+A5FJN89R5T/Q1Y5MZkKD9cYqJE8ub8EeQg3joWVC14Krg/13TtQzAj97I3togynEw+d1P2A7SOXhNtFtjZblfCemR0MDwRPN69vs039kCpkmt3P0R795UH3lqA="
+  secure: "jSsZw8CGkkgQ9oIgAQBC9xBBzY3BUa+hecx69vBG7bQQEX07dZnEEppXKraHpqq0DjI7gfE7DOPg2g6USx8l0RvIepe7Ugxr4QVjhLxhJrOkPzhfMxPb31sg1FS24OGSEARJMvtNE9juM34gxJdGyP80hKK3LDFLcvp0qxyVSG/OwDqLI4baVRqjUhjuFUtnRN64dPx+tMRyiKV4J70+YQqdslD2YXs/PDxfawXyfq+ATxS9mVjNMkDyfE1t8HSH1bZ4+TC8/UQXD7HlIpUgx7vX70s5DyHB1Cvi3J8V4iBgMuVMk9cM2Aomx7/r90edPiw6yV9KCJagd1zdmQ+PHNqgNUFLJfXRWkUhPi9hwrtNth7rNFyiOltowrSEx0LPlRwTCGGB4Qdm9HQoFR4TAMCnycNzDy8Gfb1EMcHAtp3ZYIJ15OSCuO2GGrB1cvpoORIuLg0Q2c8nXyhWP/kXtcWwuwIL8jW94z7tuojfp372Qr+fv6CDIzZdrEmA9uMZdZWXeITH8OLldQ+aRoiMhBqvejb2dQDk2SWRfu65blWWm0SSmYG+GAhtuxJZ62mGUMTI+u9AfA16QVUXqkP5mgqDiI5A6wklOeOZummlnbF8CEMBF5EZXx6ROKQ8aHEq40U/XUI6x7awQRrqiDqvknoAUrdyhKGQh+rpKZwD7aE="
