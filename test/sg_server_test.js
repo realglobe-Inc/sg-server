@@ -5,7 +5,7 @@
 'use strict'
 
 const sgServer = require('../lib/sg_server.js')
-const assert = require('assert')
+const { equal, ok } = require('assert')
 const co = require('co')
 const aport = require('aport')
 const arequest = require('arequest')
@@ -21,7 +21,7 @@ describe('sg-server', () => {
       public: `${__dirname}/../doc/mocks`,
       middlewares: [
         co.wrap(function * saySay (ctx, next) {
-          assert.equal(ctx.hoge, 'fuge')
+          equal(ctx.hoge, 'fuge')
           ctx.set({ quz: 'This is quz' })
           yield next()
         })
@@ -30,13 +30,14 @@ describe('sg-server', () => {
         '/api/foo': {
           'POST': (ctx) => {
             let { body } = ctx.request
-            assert.equal(body.hoge, 'This is hoge')
+            equal(body.hoge, 'This is hoge')
             ctx.body = 'This is foo'
           }
         },
         '/api/bar': (ctx) => {
           ctx.body = 'This is bar'
-        }
+        },
+        '/api/baz': '/api/bar' // Alias
       },
       context: {
         hoge: 'fuge'
@@ -48,20 +49,20 @@ describe('sg-server', () => {
         teardownDone = true
       }
     })
-    assert.ok(!setupDone)
+    ok(!setupDone)
     yield server.listen(port)
     baseUrl = `http://localhost:${port}`
-    assert.ok(setupDone)
+    ok(setupDone)
   }))
 
   after(() => co(function * () {
-    assert.ok(!teardownDone)
+    ok(!teardownDone)
     yield server.close()
-    assert.ok(teardownDone)
+    ok(teardownDone)
   }))
 
   it('Sg server', () => co(function * () {
-    assert.equal(server.port, port)
+    equal(server.port, port)
     {
       let { statusCode, body, headers } = yield request({
         method: 'POST',
@@ -69,9 +70,9 @@ describe('sg-server', () => {
         json: true,
         body: { 'hoge': 'This is hoge' }
       })
-      assert.equal(statusCode, 200)
-      assert.equal(body, 'This is foo')
-      assert.equal(headers.quz, 'This is quz')
+      equal(statusCode, 200)
+      equal(body, 'This is foo')
+      equal(headers.quz, 'This is quz')
     }
     {
       let { statusCode, body, headers } = yield request({
@@ -80,9 +81,20 @@ describe('sg-server', () => {
         json: true,
         body: { 'hoge': 'This is hoge' }
       })
-      assert.equal(statusCode, 200)
-      assert.equal(body, 'This is bar')
-      assert.equal(headers.quz, 'This is quz')
+      equal(statusCode, 200)
+      equal(body, 'This is bar')
+      equal(headers.quz, 'This is quz')
+    }
+    {
+      let { statusCode, body, headers } = yield request({
+        method: 'GET',
+        url: `${baseUrl}/api/baz`,
+        json: true,
+        body: { 'hoge': 'This is hoge' }
+      })
+      equal(statusCode, 200)
+      equal(body, 'This is bar')
+      equal(headers.quz, 'This is quz')
     }
   }))
 })
