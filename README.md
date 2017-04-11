@@ -91,11 +91,14 @@ co(function * () {
     ],
     /** Endpoint handlers */
     endpoints: {
-      '/api/foo': {
+      '/api/foo/:id': { // Pass object to handle each HTTP verbs
         'POST': (ctx) => {
-          ctx.body = 'This is foo'
+          let { id } = ctx.params
+          ctx.body = `This is foo with id: "${id}"`
         }
-      }
+      },
+      '/api': '/api/index', // Pass string to create alias
+      '/api/index': () => { /* ... */ } // Pass function to handle all HTTP verbs
     }
   })
 
@@ -119,7 +122,7 @@ Signature
 
 #### sgServer(config) -> http.Server
 
-Create web server
+Create web server using koa
 
 | Arg | Type | Default | Description |
 | --- | ---- | --- | --- |
