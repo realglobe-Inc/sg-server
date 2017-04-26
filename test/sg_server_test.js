@@ -49,6 +49,10 @@ describe('sg-server', () => {
         teardownDone = true
       }
     })
+    server.use((ctx, next) => {
+      console.log('Not handled!', ctx.path)
+      next()
+    })
     ok(!setupDone)
     yield server.listen(port)
     baseUrl = `http://localhost:${port}`
@@ -95,6 +99,13 @@ describe('sg-server', () => {
       equal(statusCode, 200)
       equal(body, 'This is bar')
       equal(headers.quz, 'This is quz')
+    }
+    {
+      let { statusCode, body, headers } = yield request({
+        method: 'GET',
+        url: `${baseUrl}/api/__not_exists`
+      })
+      equal(statusCode, 404)
     }
   }))
 })
