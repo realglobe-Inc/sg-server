@@ -6,20 +6,20 @@
 
 const exceptionMiddleware = require('../lib/middlewares/exception_middleware.js')
 const assert = require('assert')
-const co = require('co')
+
 
 describe('exception-middleware', () => {
-  before(() => co(function * () {
+  before(async ( ) => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async ( ) => {
 
-  }))
+  })
 
-  it('Exception middleware', () => co(function * () {
+  it('Exception middleware', async ( ) => {
     assert.ok(exceptionMiddleware())
-  }))
+  })
 })
 
 /* global describe, before, after, it */

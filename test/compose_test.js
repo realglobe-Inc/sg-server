@@ -6,26 +6,26 @@
 
 const compose = require('../lib/compose.js')
 const assert = require('assert')
-const co = require('co')
+
 
 describe('compose', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async ( ) => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async ( ) => {
 
-  }))
+  })
 
-  it('Compose', () => co(function * () {
+  it('Compose', async ( ) => {
     let composed = compose([
       () => null,
       () => null
     ])
     assert.equal(typeof composed, 'function')
-  }))
+  })
 })
 
 /* global describe, before, after, it */

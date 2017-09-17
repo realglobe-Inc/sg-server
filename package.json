@@ -1,6 +1,6 @@
 {
   "name": "sg-server",
-  "version": "1.6.1",
+  "version": "2.0.0",
   "description": "HTTP server for SUGOS",
   "main": "lib",
   "scripts": {
@@ -23,29 +23,28 @@
   },
   "homepage": "https://github.com/realglobe-Inc/sg-server#readme",
   "dependencies": {
-    "aport": "^1.0.0",
-    "arequest": "^2.0.7",
-    "co": "^4.6.0",
+    "aport": "^2.0.0",
+    "arequest": "^3.0.0",
     "koa": "^2.0.0",
-    "koa-bodyparser": "^3.1.0",
-    "koa-compose": "^3.1.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compose": "^4.0.0",
     "koa-router": "^7.1.0",
-    "koa-static": "^3.0.0"
+    "koa-static": "^4.0.1"
   },
   "devDependencies": {
-    "amocha": "^2.0.0",
+    "amocha": "^3.0.0",
     "ape-doc": "^2.0.4",
     "ape-formatting": "^1.0.1",
     "ape-releasing": "^4.0.1",
     "ape-tasking": "^4.0.3",
-    "ape-tmpl": "*",
-    "ape-updating": "*",
+    "ape-tmpl": "^6.0.1",
+    "ape-updating": "^4.1.1",
     "coz": "^6.0.5",
     "injectmock": "^2.0.0",
     "sugos-travis": "^2.0.5"
   },
   "engines": {
-    "node": ">=6",
+    "node": ">=7.6",
     "npm": ">=4"
   }
 }

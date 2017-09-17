@@ -6,20 +6,20 @@
 
 const routeMiddleware = require('../lib/middlewares/route_middleware.js')
 const assert = require('assert')
-const co = require('co')
+
 
 describe('route-middleware', () => {
-  before(() => co(function * () {
+  before(async ( ) => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async ( ) => {
 
-  }))
+  })
 
-  it('Route middleware', () => co(function * () {
+  it('Route middleware', async ( ) => {
     assert.ok(routeMiddleware({}))
-  }))
+  })
 })
 
 /* global describe, before, after, it */

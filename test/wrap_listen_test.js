@@ -6,20 +6,20 @@
 
 const wrapListen = require('../lib/wrappings/wrap_listen.js')
 const assert = require('assert')
-const co = require('co')
+
 
 describe('wrap-listen', () => {
-  before(() => co(function * () {
+  before(async ( ) => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async ( ) => {
 
-  }))
+  })
 
-  it('Wrap listen', () => co(function * () {
+  it('Wrap listen', async ( ) => {
     assert.ok(wrapListen(() => null))
-  }))
+  })
 })
 
 /* global describe, before, after, it */

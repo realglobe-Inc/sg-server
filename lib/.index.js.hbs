@@ -9,7 +9,7 @@ const sgServer = require('./sg_server')
 const freeport = require('./freeport')
 const compose = require('./compose')
 
-let lib = sgServer.bind(this)
+const lib = sgServer.bind(this)
 
 Object.assign(lib, sgServer, {
   sgServer,

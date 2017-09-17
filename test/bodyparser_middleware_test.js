@@ -6,20 +6,19 @@
 
 const bodyparserMiddleware = require('../lib/middlewares/bodyparser_middleware.js')
 const assert = require('assert')
-const co = require('co')
 
 describe('bodyparser-middleware', () => {
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Bodyparser middleware', () => co(function * () {
+  it('Bodyparser middleware', async () => {
     assert.ok(bodyparserMiddleware())
-  }))
+  })
 })
 
 /* global describe, before, after, it */

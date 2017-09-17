@@ -5,31 +5,31 @@
 'use strict'
 
 const sgServer = require('../lib/sg_server.js')
-const { equal, ok } = require('assert')
-const co = require('co')
+const {equal, ok} = require('assert')
+
 const aport = require('aport')
 const arequest = require('arequest')
 
 describe('sg-server', () => {
   let server, baseUrl, port
-  let request = arequest.create({ jar: true })
+  let request = arequest.create({jar: true})
   let setupDone = false
   let teardownDone = false
-  before(() => co(function * () {
-    port = yield aport()
+  before(async () => {
+    port = await aport()
     server = sgServer({
       public: `${__dirname}/../doc/mocks`,
       middlewares: [
-        co.wrap(function * saySay (ctx, next) {
+        async function saySay (ctx, next) {
           equal(ctx.hoge, 'fuge')
-          ctx.set({ quz: 'This is quz' })
-          yield next()
-        })
+          ctx.set({quz: 'This is quz'})
+          await next()
+        }
       ],
       endpoints: {
         '/api/foo': {
           'POST': (ctx) => {
-            let { body } = ctx.request
+            let {body} = ctx.request
             equal(body.hoge, 'This is hoge')
             ctx.body = 'This is foo'
           }
@@ -54,60 +54,60 @@ describe('sg-server', () => {
       next()
     })
     ok(!setupDone)
-    yield server.listen(port)
+    await server.listen(port)
     baseUrl = `http://localhost:${port}`
     ok(setupDone)
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
     ok(!teardownDone)
-    yield server.close()
+    await server.close()
     ok(teardownDone)
-  }))
+  })
 
-  it('Sg server', () => co(function * () {
+  it('Sg server', async () => {
     equal(server.port, port)
     {
-      let { statusCode, body, headers } = yield request({
+      let {statusCode, body, headers} = await request({
         method: 'POST',
         url: `${baseUrl}/api/foo`,
         json: true,
-        body: { 'hoge': 'This is hoge' }
+        body: {'hoge': 'This is hoge'}
       })
       equal(statusCode, 200)
       equal(body, 'This is foo')
       equal(headers.quz, 'This is quz')
     }
     {
-      let { statusCode, body, headers } = yield request({
+      let {statusCode, body, headers} = await request({
         method: 'GET',
         url: `${baseUrl}/api/bar`,
         json: true,
-        body: { 'hoge': 'This is hoge' }
+        body: {'hoge': 'This is hoge'}
       })
       equal(statusCode, 200)
       equal(body, 'This is bar')
       equal(headers.quz, 'This is quz')
     }
     {
-      let { statusCode, body, headers } = yield request({
+      let {statusCode, body, headers} = await request({
         method: 'GET',
         url: `${baseUrl}/api/baz`,
         json: true,
-        body: { 'hoge': 'This is hoge' }
+        body: {'hoge': 'This is hoge'}
       })
       equal(statusCode, 200)
       equal(body, 'This is bar')
       equal(headers.quz, 'This is quz')
     }
     {
-      let { statusCode, body, headers } = yield request({
+      let {statusCode, body, headers} = await request({
         method: 'GET',
         url: `${baseUrl}/api/__not_exists`
       })
       equal(statusCode, 404)
     }
-  }))
+  })
 })
 
 /* global describe, before, after, it */

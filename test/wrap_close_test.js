@@ -6,20 +6,20 @@
 
 const wrapClose = require('../lib/wrappings/wrap_close.js')
 const assert = require('assert')
-const co = require('co')
+
 
 describe('wrap-close', () => {
-  before(() => co(function * () {
+  before(async ( ) => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async ( ) => {
 
-  }))
+  })
 
-  it('Wrap close', () => co(function * () {
+  it('Wrap close', async ( ) => {
     assert.ok(wrapClose(() => null))
-  }))
+  })
 })
 
 /* global describe, before, after, it */

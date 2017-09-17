@@ -6,21 +6,21 @@
 
 const freeport = require('../lib/freeport.js')
 const assert = require('assert')
-const co = require('co')
+
 
 describe('freeport', () => {
-  before(() => co(function * () {
+  before(async ( ) => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async ( ) => {
 
-  }))
+  })
 
-  it('Freeport', () => co(function * () {
-    let port = yield freeport()
+  it('Freeport', async ( ) => {
+    let port = await freeport()
     assert.ok(port)
-  }))
+  })
 })
 
 /* global describe, before, after, it */
