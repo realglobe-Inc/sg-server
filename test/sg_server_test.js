@@ -68,7 +68,7 @@ describe('sg-server', () => {
   it('Sg server', async () => {
     equal(server.port, port)
     {
-      let {statusCode, body, headers} = await request({
+      const {statusCode, body, headers} = await request({
         method: 'POST',
         url: `${baseUrl}/api/foo`,
         json: true,
@@ -79,7 +79,7 @@ describe('sg-server', () => {
       equal(headers.quz, 'This is quz')
     }
     {
-      let {statusCode, body, headers} = await request({
+      const {statusCode, body, headers} = await request({
         method: 'GET',
         url: `${baseUrl}/api/bar`,
         json: true,
@@ -90,7 +90,7 @@ describe('sg-server', () => {
       equal(headers.quz, 'This is quz')
     }
     {
-      let {statusCode, body, headers} = await request({
+      const {statusCode, body, headers} = await request({
         method: 'GET',
         url: `${baseUrl}/api/baz`,
         json: true,
@@ -101,7 +101,17 @@ describe('sg-server', () => {
       equal(headers.quz, 'This is quz')
     }
     {
-      let {statusCode, body, headers} = await request({
+      const {statusCode, body, headers} = await request({
+        method: 'GET',
+        url: `${baseUrl}/api/baz`,
+        json: true,
+        headers: {'range': 'bytes=0-300'},
+        body: {'hoge': 'This is hoge'}
+      })
+      equal(statusCode, 206)
+    }
+    {
+      const {statusCode, body, headers} = await request({
         method: 'GET',
         url: `${baseUrl}/api/__not_exists`
       })
