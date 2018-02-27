@@ -25,11 +25,12 @@
   "dependencies": {
     "aport": "^2.0.0",
     "arequest": "^3.0.0",
-    "koa": "^2.0.0",
+    "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-compose": "^4.0.0",
-    "koa-router": "^7.1.0",
-    "koa-static": "^4.0.1"
+    "koa-range": "^0.3.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2"
   },
   "devDependencies": {
     "amocha": "^3.0.0",
@@ -39,7 +40,7 @@
     "ape-tasking": "^4.0.3",
     "ape-tmpl": "^6.0.1",
     "ape-updating": "^4.1.1",
-    "coz": "^6.0.5",
+    "coz": "^7.0.1",
     "injectmock": "^2.0.0",
     "sugos-travis": "^2.0.5"
   },
